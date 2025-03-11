@@ -181,7 +181,7 @@ Camera:
   near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 7.3
   m_Depth: -1
   m_CullingMask:
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 490660555}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 2.35, y: 5, z: -10}
   rotationSpeed: 0.1
 --- !u!1 &410087039
 GameObject:
@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 1870537291}
   - component: {fileID: 1870537290}
   - component: {fileID: 1870537289}
+  - component: {fileID: 1870537293}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -927,6 +928,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870537293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77970090029e3dd4796138eee4557015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ren: {fileID: 1870537290}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
