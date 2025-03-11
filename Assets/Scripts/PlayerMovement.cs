@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-    /*public void MoveToTarget()
+    public void MoveToTarget()
     {
         if (_target != null)
         {
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             }
             _agent.destination = _target.position; // Let NavMeshAgent handle movement
         }
-    }*/
+    }
     private void FaceToTarget()
     {
         Vector3 direction = (_agent.destination - transform.position).normalized;
