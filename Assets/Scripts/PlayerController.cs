@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private void AssignInputs()
     {
         _input.Main.Movement.performed += ctx => PlayerMovement.instance.ClickToMove();
+        _input.Main.Attack.performed += ctx => PlayerAttack.instance.AttakFrequancy();
     }
     private void OnEnable()
     {
