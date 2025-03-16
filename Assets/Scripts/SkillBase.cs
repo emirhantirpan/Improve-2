@@ -6,8 +6,10 @@ public abstract class SkillBase : ScriptableObject
     public string skillName;
     public int damage;
     public int manaCost;
-    public float cooldownTime; // Bekleme süresi
-    private float lastUseTime; // Son kullaným zamaný
+    public string description;
+    public float cooldownTime;
+
+    private float lastUseTime;
 
     public abstract void Activate(GameObject user);
 
@@ -16,13 +18,13 @@ public abstract class SkillBase : ScriptableObject
         return Time.time >= lastUseTime + cooldownTime;
     }
 
-    // **Eksik olan UseSkill metodu eklendi!**
+
     public void UseSkill(GameObject user)
     {
         if (CanUse())
         {
             Activate(user);
-            lastUseTime = Time.time; // Cooldown sýfýrlanýr
+            lastUseTime = Time.time;
         }
         else
         {

@@ -5,15 +5,16 @@ public class PlayerSkills : MonoBehaviour
 {
     public List<SkillBase> skills = new List<SkillBase>(); // Yetenek listesi
 
-    public void UseSkill(int index)
+    public void UseSkill(string skillName, GameObject user)
     {
-        if (index < skills.Count && skills[index] != null)
+        SkillBase skill = skills.Find(s => s.skillName == skillName);
+        if (skill != null)
         {
-            skills[index].UseSkill(gameObject);
+            skill.UseSkill(user);
         }
         else
         {
-            Debug.Log("Bu yetenek boþ veya tanýmlý deðil!");
+            Debug.Log($"{skillName} yeteneði bulunamadý!");
         }
     }
 }
