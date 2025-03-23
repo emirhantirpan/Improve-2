@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         // Movement, Attack ve Skill giriþlerini baðla
         _input.Main.Movement.performed += ctx => PlayerMovement.instance.ClickToMove();
         _input.Main.Attack.performed += ctx => PlayerAttack.instance.AttakFrequancy();
+        _input.Main.SetToClosestEnemy.performed += ctx => PlayerChooseNearestEnemy.instance.FindNearestEnemy();
 
         // Skill kullanýmlarý
         _input.Main.SkillFireball.performed += ctx => UseSkill("Skill_Fireball");

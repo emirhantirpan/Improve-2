@@ -135,6 +135,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SetToClosestEnemy"",
+                    ""type"": ""Button"",
+                    ""id"": ""97f859f4-d13f-4cab-8e32-dc248f4f37fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""SkillHeal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c359774-e553-411a-8112-9d67e0515578"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SetToClosestEnemy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +225,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Main_SkillFireball = m_Main.FindAction("SkillFireball", throwIfNotFound: true);
         m_Main_SkillThunder = m_Main.FindAction("SkillThunder", throwIfNotFound: true);
         m_Main_SkillHeal = m_Main.FindAction("SkillHeal", throwIfNotFound: true);
+        m_Main_SetToClosestEnemy = m_Main.FindAction("SetToClosestEnemy", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -290,6 +311,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_SkillFireball;
     private readonly InputAction m_Main_SkillThunder;
     private readonly InputAction m_Main_SkillHeal;
+    private readonly InputAction m_Main_SetToClosestEnemy;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -321,6 +343,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/SkillHeal".
         /// </summary>
         public InputAction @SkillHeal => m_Wrapper.m_Main_SkillHeal;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/SetToClosestEnemy".
+        /// </summary>
+        public InputAction @SetToClosestEnemy => m_Wrapper.m_Main_SetToClosestEnemy;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -362,6 +388,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SkillHeal.started += instance.OnSkillHeal;
             @SkillHeal.performed += instance.OnSkillHeal;
             @SkillHeal.canceled += instance.OnSkillHeal;
+            @SetToClosestEnemy.started += instance.OnSetToClosestEnemy;
+            @SetToClosestEnemy.performed += instance.OnSetToClosestEnemy;
+            @SetToClosestEnemy.canceled += instance.OnSetToClosestEnemy;
         }
 
         /// <summary>
@@ -388,6 +417,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @SkillHeal.started -= instance.OnSkillHeal;
             @SkillHeal.performed -= instance.OnSkillHeal;
             @SkillHeal.canceled -= instance.OnSkillHeal;
+            @SetToClosestEnemy.started -= instance.OnSetToClosestEnemy;
+            @SetToClosestEnemy.performed -= instance.OnSetToClosestEnemy;
+            @SetToClosestEnemy.canceled -= instance.OnSetToClosestEnemy;
         }
 
         /// <summary>
@@ -463,5 +495,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSkillHeal(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SetToClosestEnemy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSetToClosestEnemy(InputAction.CallbackContext context);
     }
 }

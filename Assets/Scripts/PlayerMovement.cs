@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 Instantiate(_clickEffect, hit.point += new Vector3(0f, 0.1f, 0f), _clickEffect.transform.rotation);
             }
-            
         }
     }
     public void MoveTowardsTarget()
