@@ -1,9 +1,14 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Thunder", menuName = "Scriptable Objects/Skills/Thunder")]
 public class Skill_Thunder : SkillBase
 {
-    public float radius = 5f;
+    private float radius = 5f;
+
+    public Skill_Thunder()
+    {
+        skillName = "Thunder";
+        damage = 20; // Hasar miktarý
+    }
 
     public override void Activate(GameObject user)
     {
@@ -14,6 +19,7 @@ public class Skill_Thunder : SkillBase
             if (enemy.CompareTag("Enemy"))
             {
                 Debug.Log($"{skillName} {enemy.name} düþmanýna {damage} hasar verdi!");
+                // Burada düþmana zarar verme kodu eklenebilir.
             }
         }
     }

@@ -1,16 +1,20 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Heal", menuName = "Scriptable Objects/Skills/Heal")]
 public class Skill_Heal : SkillBase
 {
-    public int healAmount = 50;
+    private int healAmount = 25;
+
+    public Skill_Heal()
+    {
+        skillName = "Heal";
+    }
 
     public override void Activate(GameObject user)
     {
         PlayerHealth playerHealth = user.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
-            playerHealth.Heal(healAmount);
+            playerHealth.Heal(healAmount); // Heal fonksiyonu çaðrýlýyor
             Debug.Log($"{skillName} kullanýldý! Oyuncu {healAmount} can iyileþti.");
         }
         else

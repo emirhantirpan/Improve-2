@@ -1276,10 +1276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d0a1f2e33eaa74d9a39d64644194a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 11400000, guid: 2d4099a24a1ae384e8351815951de605, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1992946998
 Transform:
   m_ObjectHideFlags: 0
@@ -1295,6 +1291,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2036691062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036691064}
+  - component: {fileID: 2036691063}
+  - component: {fileID: 2036691067}
+  - component: {fileID: 2036691066}
+  - component: {fileID: 2036691065}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2036691063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036691062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d0a1f2e33eaa74d9a39d64644194a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2036691064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036691062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 487.36136, y: -87.703865, z: 540.33307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2036691065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036691062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464306b980d5b9f4ba33227637b965de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Damage Around
+  damage: 1
+  manaCost: 20
+  description: 
+  cooldownTime: 8
+  radius: 5
+  rotationSpeed: 360
+  damageOverTime: 10
+--- !u!114 &2036691066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036691062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795b5281e5c7beb4c9c61922d93a5e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Thunder
+  damage: 20
+  manaCost: 35
+  description: 
+  cooldownTime: 15
+--- !u!114 &2036691067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036691062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10a36cfcfd8bd64bb3217ef1b9ab1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Heal
+  damage: 0
+  manaCost: 30
+  description: 
+  cooldownTime: 10
 --- !u!1001 &2803232254790552854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1370,3 +1467,4 @@ SceneRoots:
   - {fileID: 1992946998}
   - {fileID: 92772359}
   - {fileID: 1868703459}
+  - {fileID: 2036691064}

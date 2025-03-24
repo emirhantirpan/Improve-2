@@ -3,18 +3,37 @@ using System.Collections.Generic;
 
 public class PlayerSkills : MonoBehaviour
 {
-    public List<SkillBase> skills = new List<SkillBase>(); // Yetenek listesi
+    private Skill_Heal healSkill;
+    private Skill_DamageAround damageAround;
+    private Skill_Thunder _Thunder;
+    private void Start()
+    {
+        
+
+
+        healSkill = gameObject.AddComponent<Skill_Heal>();
+       damageAround = gameObject.AddComponent<Skill_DamageAround>();
+        _Thunder = gameObject.AddComponent<Skill_Thunder>();
+    }
+
+
+
+
+
 
     public void UseSkill(string skillName, GameObject user)
     {
-        SkillBase skill = skills.Find(s => s.skillName == skillName);
-        if (skill != null)
+        if (skillName == "Heal")
         {
-            skill.UseSkill(user);
+            healSkill.Activate(user);
         }
-        else
+        if(skillName == "Thunder")
         {
-            Debug.Log($"{skillName} yeteneði bulunamadý!");
+            _Thunder.Activate(user);
+        }
+        if(skillName == "DamageAround")
+        {
+            damageAround.Activate(user);
         }
     }
 }

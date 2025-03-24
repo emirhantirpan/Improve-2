@@ -32,6 +32,5 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Oyuncu öldü!");
-        // Ölüm animasyonu veya sahne deðiþikliði buraya eklenebilir.
     }
 }

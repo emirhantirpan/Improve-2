@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillBase", menuName = "Scriptable Objects/SkillBase")]
-public abstract class SkillBase : ScriptableObject
+public abstract class SkillBase : MonoBehaviour
 {
     public string skillName;
     public int damage;
@@ -17,7 +16,6 @@ public abstract class SkillBase : ScriptableObject
     {
         return Time.time >= lastUseTime + cooldownTime;
     }
-
 
     public void UseSkill(GameObject user)
     {

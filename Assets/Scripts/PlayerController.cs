@@ -5,13 +5,11 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerActions _input;
     private PlayerSkills _playerSkills;
-    private PlayerHealth _playerHealth; // PlayerHealth bileþeni referansý
 
     private void Awake()
     {
         _input = new PlayerActions();
         _playerSkills = GetComponent<PlayerSkills>();
-        _playerHealth = GetComponent<PlayerHealth>(); // PlayerHealth bileþenini al
 
         AssignInputs();
     }
@@ -22,11 +20,23 @@ public class PlayerController : MonoBehaviour
         _input.Main.Movement.performed += ctx => PlayerMovement.instance.ClickToMove();
         _input.Main.Attack.performed += ctx => PlayerAttack.instance.AttakFrequancy();
         _input.Main.SetToClosestEnemy.performed += ctx => PlayerChooseNearestEnemy.instance.FindNearestEnemy();
+    }
 
-        // Skill kullanýmlarý
-        _input.Main.SkillFireball.performed += ctx => UseSkill("Skill_Fireball");
-        _input.Main.SkillThunder.performed += ctx => UseSkill("Thunder");
-        _input.Main.SkillHeal.performed += ctx => UseSkill("Heal");
+    private void Update()
+    {
+        // Sadece skiller için 1, 2, 3 tuþlarýna basýldýðýnda ilgili skiller çalýþtýrýlýr
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // DamageAround skill
+        {
+            UseSkill("DamageAround");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) // Thunder skill
+        {
+            UseSkill("Thunder");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) // Heal skill
+        {
+            UseSkill("Heal");
+        }
     }
 
     private void UseSkill(string skillName)
@@ -35,24 +45,6 @@ public class PlayerController : MonoBehaviour
         if (_playerSkills != null)
         {
             _playerSkills.UseSkill(skillName, gameObject); // Oyuncu nesnesini de gönder
-        }
-    }
-
-    // Saðlýk al
-    public void TakeDamage(int amount)
-    {
-        if (_playerHealth != null)
-        {
-            _playerHealth.TakeDamage(amount);
-        }
-    }
-
-    // Saðlýk iyileþtir
-    public void Heal(int amount)
-    {
-        if (_playerHealth != null)
-        {
-            _playerHealth.Heal(amount);
         }
     }
 
