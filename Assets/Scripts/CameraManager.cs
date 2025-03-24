@@ -6,6 +6,7 @@ public class CameraManager : MonoBehaviour
     public Transform target;
     public float smoothSpeed = 0.125f;
     private float xRotation;
+    private float yRotation;
     private bool isRotating;
     private Vector2 delta;
     public Vector3 offset;
@@ -14,7 +15,9 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        xRotation = transform.rotation.eulerAngles.x;
+        Vector3 angles = transform.rotation.eulerAngles;
+        xRotation = angles.x;
+        yRotation = angles.y;
     }
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -23,15 +26,19 @@ public class CameraManager : MonoBehaviour
     }
     public void OnRotate(InputAction.CallbackContext context)
     {
-        isRotating = context.started || context.performed;
+        if(context.started) { isRotating = true; }
+        else if (context.canceled) { isRotating = false; }
     }
     private void LateUpdate()
     {
         if (isRotating)
         {
-            transform.Rotate(new Vector3(xRotation , -delta.x * rotationSpeed , 0.0f));
-            transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, 0.0f);
+            yRotation += delta.x * rotationSpeed;
+            xRotation -= delta.y * rotationSpeed;
+            xRotation = Mathf.Clamp(xRotation, 8.7f, 30f);
         }
+        Quaternion rotation = Quaternion.Euler(xRotation, yRotation, 0.0f);
         transform.position = target.position + offset;
+        transform.rotation = rotation;
     }
 }
