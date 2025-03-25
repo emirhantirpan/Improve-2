@@ -110,33 +110,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SkillFireball"",
-                    ""type"": ""Button"",
-                    ""id"": ""3bc3bfd2-afba-44f5-94f5-148499dd03ae"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SkillThunder"",
-                    ""type"": ""Button"",
-                    ""id"": ""8a5211a9-8f00-443c-ac5c-36e3153fb839"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SkillHeal"",
-                    ""type"": ""Button"",
-                    ""id"": ""45430117-bee3-4aa2-b3d8-6ae251c83f5d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SetToClosestEnemy"",
                     ""type"": ""Button"",
                     ""id"": ""97f859f4-d13f-4cab-8e32-dc248f4f37fa"",
@@ -171,39 +144,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""252698db-b783-46d4-8fc5-10b26522be91"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillFireball"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1852ca3c-4789-4b66-ba72-788778f5f491"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillThunder"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""78e64ea5-8611-485f-9206-c92cb8a90bb5"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SkillHeal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0c359774-e553-411a-8112-9d67e0515578"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
@@ -222,9 +162,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_Movement = m_Main.FindAction("Movement", throwIfNotFound: true);
         m_Main_Attack = m_Main.FindAction("Attack", throwIfNotFound: true);
-        m_Main_SkillFireball = m_Main.FindAction("SkillFireball", throwIfNotFound: true);
-        m_Main_SkillThunder = m_Main.FindAction("SkillThunder", throwIfNotFound: true);
-        m_Main_SkillHeal = m_Main.FindAction("SkillHeal", throwIfNotFound: true);
         m_Main_SetToClosestEnemy = m_Main.FindAction("SetToClosestEnemy", throwIfNotFound: true);
     }
 
@@ -308,9 +245,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
     private readonly InputAction m_Main_Movement;
     private readonly InputAction m_Main_Attack;
-    private readonly InputAction m_Main_SkillFireball;
-    private readonly InputAction m_Main_SkillThunder;
-    private readonly InputAction m_Main_SkillHeal;
     private readonly InputAction m_Main_SetToClosestEnemy;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
@@ -331,18 +265,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_Main_Attack;
-        /// <summary>
-        /// Provides access to the underlying input action "Main/SkillFireball".
-        /// </summary>
-        public InputAction @SkillFireball => m_Wrapper.m_Main_SkillFireball;
-        /// <summary>
-        /// Provides access to the underlying input action "Main/SkillThunder".
-        /// </summary>
-        public InputAction @SkillThunder => m_Wrapper.m_Main_SkillThunder;
-        /// <summary>
-        /// Provides access to the underlying input action "Main/SkillHeal".
-        /// </summary>
-        public InputAction @SkillHeal => m_Wrapper.m_Main_SkillHeal;
         /// <summary>
         /// Provides access to the underlying input action "Main/SetToClosestEnemy".
         /// </summary>
@@ -379,15 +301,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @SkillFireball.started += instance.OnSkillFireball;
-            @SkillFireball.performed += instance.OnSkillFireball;
-            @SkillFireball.canceled += instance.OnSkillFireball;
-            @SkillThunder.started += instance.OnSkillThunder;
-            @SkillThunder.performed += instance.OnSkillThunder;
-            @SkillThunder.canceled += instance.OnSkillThunder;
-            @SkillHeal.started += instance.OnSkillHeal;
-            @SkillHeal.performed += instance.OnSkillHeal;
-            @SkillHeal.canceled += instance.OnSkillHeal;
             @SetToClosestEnemy.started += instance.OnSetToClosestEnemy;
             @SetToClosestEnemy.performed += instance.OnSetToClosestEnemy;
             @SetToClosestEnemy.canceled += instance.OnSetToClosestEnemy;
@@ -408,15 +321,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @SkillFireball.started -= instance.OnSkillFireball;
-            @SkillFireball.performed -= instance.OnSkillFireball;
-            @SkillFireball.canceled -= instance.OnSkillFireball;
-            @SkillThunder.started -= instance.OnSkillThunder;
-            @SkillThunder.performed -= instance.OnSkillThunder;
-            @SkillThunder.canceled -= instance.OnSkillThunder;
-            @SkillHeal.started -= instance.OnSkillHeal;
-            @SkillHeal.performed -= instance.OnSkillHeal;
-            @SkillHeal.canceled -= instance.OnSkillHeal;
             @SetToClosestEnemy.started -= instance.OnSetToClosestEnemy;
             @SetToClosestEnemy.performed -= instance.OnSetToClosestEnemy;
             @SetToClosestEnemy.canceled -= instance.OnSetToClosestEnemy;
@@ -474,27 +378,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SkillFireball" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSkillFireball(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SkillThunder" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSkillThunder(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SkillHeal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSkillHeal(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "SetToClosestEnemy" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

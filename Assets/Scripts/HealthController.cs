@@ -5,12 +5,13 @@ public class HealthController : MonoBehaviour
 {
      public int health;
    
-    public void Hit(int damageValue)
+    public void DecreaseHealth(int damageValue)
     {
         health -= damageValue;
         if (health <= 0)
         {
             StartCoroutine(Destroy());
+            health = 0;
         }
     }    
     IEnumerator Destroy()

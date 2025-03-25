@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class PlayerSkills : MonoBehaviour
 {
-    private Skill_Heal healSkill;
-    private Skill_DamageAround damageAround;
-    private Skill_Thunder _Thunder;
+    public Skill_Heal healSkill;
+    public Skill_DamageAround damageAround;
+    public Skill_Thunder _Thunder;
     private void Start()
     {
         
 
 
-        healSkill = gameObject.AddComponent<Skill_Heal>();
+        /*healSkill = gameObject.AddComponent<Skill_Heal>();
        damageAround = gameObject.AddComponent<Skill_DamageAround>();
-        _Thunder = gameObject.AddComponent<Skill_Thunder>();
+        _Thunder = gameObject.AddComponent<Skill_Thunder>();*/
     }
 
 
