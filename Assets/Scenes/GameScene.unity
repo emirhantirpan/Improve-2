@@ -1499,6 +1499,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 158914656}
+--- !u!114 &950682865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950682851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67ec5d85160dea45b3b32fe8afcea13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+--- !u!114 &950682866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950682851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d87a4bcd4e7df2499eb502622c3d8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthController: {fileID: 950682865}
+  isDead: 0
 --- !u!1 &1047684748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +2650,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8482c70dffd837e419a6ad706f0a748f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 950682864}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8482c70dffd837e419a6ad706f0a748f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 950682866}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8482c70dffd837e419a6ad706f0a748f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 950682865}
   m_SourcePrefab: {fileID: 100100000, guid: 8482c70dffd837e419a6ad706f0a748f, type: 3}
 --- !u!1 &1868703456
 GameObject:
@@ -2716,6 +2749,11 @@ GameObject:
   - component: {fileID: 1870537290}
   - component: {fileID: 1870537289}
   - component: {fileID: 1870537293}
+  - component: {fileID: 1870537297}
+  - component: {fileID: 1870537298}
+  - component: {fileID: 1870537296}
+  - component: {fileID: 1870537295}
+  - component: {fileID: 1870537294}
   m_Layer: 0
   m_Name: Target
   m_TagString: Enemy
@@ -2824,7 +2862,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77970090029e3dd4796138eee4557015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ren: {fileID: 1870537290}
+  enemyName: 
+  enemyHealth: 0
+  enemyLevel: 0
+  healthController: {fileID: 1870537296}
+--- !u!195 &1870537294
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 9999
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1870537295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ca1d5449242c849832f1a2e4e6f9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 1870537294}
+  _target: {fileID: 950682857}
+  enemyAttack: {fileID: 1870537297}
+--- !u!114 &1870537296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67ec5d85160dea45b3b32fe8afcea13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+--- !u!114 &1870537297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448e0e284ffc7f34cba22a49331155d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 3
+  isAttacking: 0
+  damage: 10
+  _playerAttack: {fileID: 950682856}
+  _healthController: {fileID: 1870537296}
+--- !u!114 &1870537298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870537288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aab0c3f856aca448069164c2029cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthController: {fileID: 1870537296}
 --- !u!1 &1914768490
 GameObject:
   m_ObjectHideFlags: 0

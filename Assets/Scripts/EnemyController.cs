@@ -1,14 +1,27 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] Renderer ren;
-    private void OnMouseEnter()
+    public string enemyName;
+    public int enemyHealth;
+    public int enemyLevel;
+
+    //public TMP_Text enemyNameText;
+    public HealthController healthController;
+    //public LevelController levelController;
+
+    public void Update()
     {
-        ren.material.color = Color.red;
+        Initialize();
+        DisplayTexts();
     }
-    private void OnMouseExit()
+    public virtual void Initialize()
     {
-        ren.material.color = Color.white;
+
+    }
+    public virtual void DisplayTexts()
+    {
+        //enemyNameText.text = enemyName;
     }
 }
