@@ -62,4 +62,9 @@ public class PlayerChooseNearestEnemy : MonoBehaviour
             _agent.SetDestination(_target.position);
         }
     }
+    public Transform GetTarget()
+    {
+        return _target;
+    }
+
 }

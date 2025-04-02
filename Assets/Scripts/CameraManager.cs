@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class CameraManager : MonoBehaviour
 {
     public Transform target;
+ 
     public float smoothSpeed = 0.125f;
     private float xRotation;
     private float yRotation;
@@ -40,5 +42,20 @@ public class CameraManager : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(xRotation, yRotation, 0.0f);
         transform.position = target.position + offset;
         transform.rotation = rotation;
+
+        //if (Keyboard.current.zKey.wasPressedThisFrame)
+        //{
+        //    RotateCameraToCharacterFacingDirection();
+        //}
+
+        
     }
+    //private void RotateCameraToCharacterFacingDirection()
+    //{
+    //    Vector3 characterForward = target.forward;
+
+    //    Quaternion lookRotation = Quaternion.LookRotation(characterForward);
+
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation,rotationSpeed*Time.deltaTime);   
+    //}
 }
