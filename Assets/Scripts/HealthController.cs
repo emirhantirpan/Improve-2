@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+     public static HealthController instance;
+    
      public int health;
-   
+
+    private void Awake()
+    {
+        instance = this;
+    }
     public void DecreaseHealth(int damageValue)
     {
         health -= damageValue;
@@ -20,4 +26,5 @@ public class HealthController : MonoBehaviour
         Destroy(gameObject);
 
     }
+    
 }

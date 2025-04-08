@@ -11,15 +11,19 @@ public class Skill_Heal : SkillBase
 
     public override void Activate(GameObject user)
     {
-        PlayerHealth playerHealth = user.GetComponent<PlayerHealth>();
+        HealthController playerHealth = user.GetComponent<HealthController>();
         if (playerHealth != null)
         {
-            playerHealth.Heal(healAmount); // Heal fonksiyonu çaðrýlýyor
+            Heal(healAmount); // Heal fonksiyonu çaðrýlýyor
             Debug.Log($"{skillName} kullanýldý! Oyuncu {healAmount} can iyileþti.");
         }
         else
         {
             Debug.LogWarning("PlayerHealth bileþeni bulunamadý!");
         }
+    }
+    public void Heal(int heal)
+    {
+        HealthController.instance.health += heal;
     }
 }
