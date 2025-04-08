@@ -5,11 +5,11 @@ public class HealthController : MonoBehaviour
 {
      public static HealthController instance;
 
-  //  public int maxHealth = 100;
+   //public int maxHealth = 100;
      public int health;
     
 
-   // public HealthBar healthBar;
+    public HealthBar healthBar;
 
     private void Awake()
     {
