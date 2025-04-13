@@ -27,7 +27,7 @@ public class SkilllBarController : MonoBehaviour
 
     void Ability1()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)&& isCooldown==false)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isCooldown==false)
         {
             isCooldown = true;
             skillImage1.fillAmount = 1;

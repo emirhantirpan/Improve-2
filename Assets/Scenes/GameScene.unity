@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 350358282}
   - component: {fileID: 350358283}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2708,6 +2708,7 @@ MonoBehaviour:
   manaCost: 0
   description: 
   cooldownTime: 0
+  cylinderPrefab: {fileID: 5624875340479592742, guid: 2d2c06b2c839cf945823333c1d24896c, type: 3}
 --- !u!114 &950682862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2727,7 +2728,9 @@ MonoBehaviour:
   cooldownTime: 0
   radius: 5
   rotationSpeed: 360
-  damageOverTime: 10
+  damagePerTick: 10
+  duration: 3
+  rotatingCirclePrefab: {fileID: 5924144631743144213, guid: 0d7a94866f1f9594cafb1e0a9d5bf2b2, type: 3}
 --- !u!114 &950682863
 MonoBehaviour:
   m_ObjectHideFlags: 0

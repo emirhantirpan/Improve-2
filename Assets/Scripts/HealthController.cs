@@ -7,8 +7,6 @@ public class HealthController : MonoBehaviour
 
    //public int maxHealth = 100;
      public int health;
-    
-
     public HealthBar healthBar;
 
     private void Awake()
@@ -41,7 +39,6 @@ public class HealthController : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         Destroy(gameObject);
-
     }
     
 }
