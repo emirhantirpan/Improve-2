@@ -5,11 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerActions _input;
     private PlayerSkills _playerSkills;
+    private PlayerAttack _playerAttack;
 
     private void Awake()
     {
         _input = new PlayerActions();
         _playerSkills = GetComponent<PlayerSkills>();
+        _playerAttack = GetComponent<PlayerAttack>();
 
         AssignInputs();
     }
@@ -18,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         // Movement, Attack ve Skill giriþlerini baðla
         _input.Main.Movement.performed += ctx => PlayerMovement.instance.ClickToMove();
-        _input.Main.Attack.performed += ctx => PlayerAttack.instance.AttakFrequancy();
+        _input.Main.Attack.performed += ctx => _playerAttack.AttackFrequency();
         _input.Main.SetToClosestEnemy.performed += ctx => PlayerChooseNearestEnemy.instance.FindNearestEnemy();
     }
 

@@ -4,8 +4,8 @@ public class Enemy_First : EnemyController
 {
     public override void Initialize()
     {
-        enemyName = "FirstEnemy";
+        enemyName = "FirstBandit";
         enemyHealth = healthController.health;
-        //enemyLevel = levelController.level;
+        enemyLevel = levelController.level;
     }
 }

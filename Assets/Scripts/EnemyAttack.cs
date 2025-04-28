@@ -7,6 +7,7 @@ public class EnemyAttack : MonoBehaviour
     public bool isAttacking = false;
     public int damage = 10;
 
+    public CharacterState CharacterState;
     [SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private HealthController _healthController;
 
@@ -29,12 +30,14 @@ public class EnemyAttack : MonoBehaviour
         {
             StopCoroutine(_attackCoroutine);
             _attackCoroutine = null;
+            CharacterState.isAttacking = false;
             isAttacking = false;
         }
     }
     private IEnumerator Attack()
     {
         isAttacking = true;
+        CharacterState.isAttacking = true;
         while (isAttacking && this != null)
         {
             if (_playerAttack != null && PlayerTakeDamage.instance != null)

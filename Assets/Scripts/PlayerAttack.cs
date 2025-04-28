@@ -3,22 +3,17 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static PlayerAttack instance;
-
-    public float attackDamage;
-    public float attackRange;
-    public float attackRate;
-    public bool isAttacking;
+    public float attackRange = 2f;
+    public float attackRate = 1.4f;
+    public int attackDamage = 30;
 
     private float _nextAttackTime = 0f;
 
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private LayerMask _attackLayer;
-    private void Awake()
-    {
-        instance = this;
-    }
-    public void AttakFrequancy()
+    //[SerializeField] private CharacterState _characterState;
+
+    public void AttackFrequency()
     {
         if (Time.time >= _nextAttackTime)
         {
@@ -28,13 +23,16 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Attack()
     {
-        isAttacking = true;
+        //_characterState.isAttacking = true;
 
         Collider[] hitEnemies = Physics.OverlapSphere(_attackPoint.position, attackRange, _attackLayer);
 
-        foreach (Collider enemy in hitEnemies)
+        foreach (var enemy in hitEnemies)
         {
-            //enemy.GetComponent<EnemyTakeDamage>().TakeDamage(attackDamage);
+            if (enemy != null)
+            {
+                enemy.GetComponent<EnemyTakeDamage>().TakeDamage(attackDamage);
+            }
         }
         StartCoroutine(ResetAttack());
     }
@@ -48,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private IEnumerator ResetAttack()
     {
-        yield return new WaitForSeconds(attackRate);
-        isAttacking = false;
+        yield return new WaitForSeconds(1f);
+        //_characterState.isAttacking = false;
     }
 }
