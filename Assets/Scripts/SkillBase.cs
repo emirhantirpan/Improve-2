@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public abstract class SkillBase : MonoBehaviour
 {
@@ -8,9 +9,23 @@ public abstract class SkillBase : MonoBehaviour
     public string description;
     public float cooldownTime;
 
-    private float lastUseTime;
+    
+    public float lastUseTime;
+
+    private void Start()
+    {
+        lastUseTime = -cooldownTime;
+    }
+
 
     public abstract void Activate(GameObject user);
+
+    // Coroutine tabanlý aktivasyon
+    public virtual IEnumerator ActivateCoroutine(GameObject user)
+    {
+        Activate(user);
+        yield break;
+    }
 
     public bool CanUse()
     {
@@ -21,7 +36,7 @@ public abstract class SkillBase : MonoBehaviour
     {
         if (CanUse())
         {
-            Activate(user);
+            user.GetComponent<MonoBehaviour>().StartCoroutine(ActivateCoroutine(user));
             lastUseTime = Time.time;
         }
         else

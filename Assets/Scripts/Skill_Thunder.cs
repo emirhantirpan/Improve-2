@@ -1,16 +1,19 @@
 using UnityEngine;
+using System.Collections;
 
 public class Skill_Thunder : SkillBase
 {
-   
-
-    public GameObject cylinderPrefab; // Silindir (yýldýrým) prefabý
+    public GameObject cylinderPrefab;
     private float radius = 5f;
+    private void Start()
+    {
+        lastUseTime = -cooldownTime;
+    }
 
     public Skill_Thunder()
     {
-        skillName = "ThunderStrike";
-        damage = 0; // Þimdilik hasar vermiyor, sadece efekt
+        skillName = "Thunder";
+        damage = 0;
     }
 
     public override void Activate(GameObject user)
@@ -30,6 +33,10 @@ public class Skill_Thunder : SkillBase
             }
         }
     }
+
+    public override IEnumerator ActivateCoroutine(GameObject user)
+    {
+        Activate(user);
+        yield return null;
+    }
 }
-
-

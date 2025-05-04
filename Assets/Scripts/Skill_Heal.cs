@@ -1,8 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class Skill_Heal : SkillBase
 {
     private int healAmount = 25;
+    private void Start()
+    {
+        lastUseTime = -cooldownTime;
+    }
 
     public Skill_Heal()
     {
@@ -14,7 +19,7 @@ public class Skill_Heal : SkillBase
         HealthController playerHealth = user.GetComponent<HealthController>();
         if (playerHealth != null)
         {
-            Heal(healAmount); // Heal fonksiyonu çaðrýlýyor
+            Heal(healAmount);
             Debug.Log($"{skillName} kullanýldý! Oyuncu {healAmount} can iyileþti.");
         }
         else
@@ -22,8 +27,15 @@ public class Skill_Heal : SkillBase
             Debug.LogWarning("PlayerHealth bileþeni bulunamadý!");
         }
     }
+
     public void Heal(int heal)
     {
         HealthController.instance.health += heal;
+    }
+
+    public override IEnumerator ActivateCoroutine(GameObject user)
+    {
+        Activate(user);
+        yield return null;
     }
 }
