@@ -4,6 +4,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance { get; private set; }
+    public delegate void OnInventoryUpdated();
+    public static event OnInventoryUpdated InstanceUpdated;
+
+    
 
     public List<Item> items = new List<Item>();
 
@@ -21,6 +25,7 @@ public class Inventory : MonoBehaviour
         {
             items.Add(newItem);
             Debug.Log(newItem.itemName + " envantere eklendi!");
+            InstanceUpdated?.Invoke();
         }
     }
 }
