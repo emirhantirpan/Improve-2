@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private LayerMask _attackLayer;
-    //[SerializeField] private CharacterState _characterState;
+    [SerializeField] private CharacterState _characterState;
 
     public void AttackFrequency()
     {
@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Attack()
     {
-        //_characterState.isAttacking = true;
+        _characterState.isAttacking = true;
 
         Collider[] hitEnemies = Physics.OverlapSphere(_attackPoint.position, attackRange, _attackLayer);
 
@@ -47,6 +47,6 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator ResetAttack()
     {
         yield return new WaitForSeconds(1f);
-        //_characterState.isAttacking = false;
+        _characterState.isAttacking = false;
     }
 }

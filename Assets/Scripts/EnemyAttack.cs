@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float attackSpeed = 3f;
+    public float attackSpeed = 1.5f;
     public bool isAttacking = false;
     public int damage = 10;
 

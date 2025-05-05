@@ -4,6 +4,7 @@ using System.Collections;
 public class Skill_Heal : SkillBase
 {
     private int healAmount = 25;
+    public HealthController HealthController;
     private void Start()
     {
         lastUseTime = -cooldownTime;
@@ -30,7 +31,7 @@ public class Skill_Heal : SkillBase
 
     public void Heal(int heal)
     {
-        HealthController.instance.health += heal;
+        HealthController.health += heal;
     }
 
     public override IEnumerator ActivateCoroutine(GameObject user)

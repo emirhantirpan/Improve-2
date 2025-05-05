@@ -9,10 +9,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float _lookRotationSpeed = 8f;
 
-    [SerializeField] private NavMeshAgent _agent;
+    private NavMeshAgent _agent;
     [SerializeField] private LayerMask _clickableLayers;
     [SerializeField] private ParticleSystem _clickEffect;
-    [SerializeField] private Transform _target;
 
     private void Awake()
     {
@@ -22,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         instance = this;
+        
+        _agent = GetComponent<NavMeshAgent>();
     }
     private void Update()
     {
@@ -40,19 +41,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    public void MoveTowardsTarget()
-    {
-        /*if (PlayerChooseNearestEnemy.instance.target == null) return;
-
-        transform.position = Vector3.MoveTowards(transform.position, target.position, PlayerChooseNearestEnemy.instance.moveSpeed * Time.deltaTime);
-        transform.LookAt(target);*/
-    }
     private void FaceToTarget()
     {
-        /*Vector3 direction = (_agent.destination - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _lookRotationSpeed);*/
-
         if (_agent.velocity != Vector3.zero)
         {
             Vector3 direction = (_agent.destination - transform.position).normalized;
