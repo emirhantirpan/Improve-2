@@ -12,7 +12,7 @@ public class ChestController : MonoBehaviour
 
     [Header("Chest Settings")]
     public Transform lidTransform;
-    public float openAngle = 45f;
+    public float openAngle = 20f;
     public float openSpeed = 2f;
 
     [Header("Reward")]

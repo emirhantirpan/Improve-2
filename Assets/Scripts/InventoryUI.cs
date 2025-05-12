@@ -2,28 +2,24 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public GameObject inventoryPanel;       // Inspector'dan panel atanacak
-    public Transform slotParent;            // Grid Layout objesi
+    public GameObject inventoryPanel;
+    public Transform slotParent;
     private InventorySlot[] slots;
 
     private void Start()
     {
         slots = slotParent.GetComponentsInChildren<InventorySlot>();
         Inventory.InstanceUpdated += UpdateUI;
-
-        inventoryPanel.SetActive(false); // Oyun baþlarken gizli
-        UpdateUI();
+        inventoryPanel.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) // Envanter tuþu: 'I'
+        if (Input.GetKeyDown(KeyCode.I))
         {
             bool isActive = inventoryPanel.activeSelf;
             inventoryPanel.SetActive(!isActive);
-
-            if (!isActive)
-                UpdateUI();
+            if (!isActive) UpdateUI();
         }
     }
 
