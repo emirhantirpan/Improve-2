@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -45,11 +47,15 @@ public class EnemyAttack : MonoBehaviour
                 PlayerTakeDamage.instance.TakeDamage(damage);
                 yield return new WaitForSeconds(attackSpeed);
             }
+            else
+            {
+                yield return null;
+            }
         }
     }
     private void SetScript()
     {
-        if (_healthController.health == 0)
+        if (_healthController != null && _healthController.health == 0)
         {
             Destroy(this);
         }

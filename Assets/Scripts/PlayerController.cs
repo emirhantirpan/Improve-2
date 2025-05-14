@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
         {
             UseSkill("Heal");
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EnemySpawner.instance.SpawnEnemy();
+        }
     }
 
     private void UseSkill(string skillName)

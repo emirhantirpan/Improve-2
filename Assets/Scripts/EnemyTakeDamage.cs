@@ -10,8 +10,11 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (_healthController == null || _sliderController == null) return;
+
         isTakingDamage = true;
         _healthController.DecreaseHealth(damage);
+
         if (_healthController.health > 0)
         {
             PanelController.instance.OpenPanel(_sliderController._statPanel);
@@ -20,6 +23,7 @@ public class EnemyTakeDamage : MonoBehaviour
         {
             PanelController.instance.ClosePanel(_sliderController._statPanel);
         }
+
         StartCoroutine(ResetTakingDamage());
         StartCoroutine(ClosePanelAfterSeconds());
     }

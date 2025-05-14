@@ -12,6 +12,7 @@ public class HealthController : MonoBehaviour
     private float _healthPercentage;
 
     public SliderController SliderController;
+    public EnemyController EnemyController;
 
     private void Awake()
     {

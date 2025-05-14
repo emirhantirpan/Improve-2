@@ -21,11 +21,11 @@ public class SliderController : MonoBehaviour
     {
         switch (enemyType)
         {
-            case "FirstBandit":
+            case "EnemyIskeletor":
                 HealthController.health = 100;
 
                 break;
-            case "SecondBandit":
+            case "EnemyWerewolf":
                 HealthController.health = 150;
 
                 break;

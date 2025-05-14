@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     }
     public virtual void Initialize()
     {
-
+        
     }
     public virtual void DisplayTexts()
     {

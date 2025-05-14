@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (_target == null) return;
+
         Movement();
         StoppingDistance();
     }
@@ -49,8 +51,8 @@ public class EnemyMovement : MonoBehaviour
     }
     public float AttackRange()
     {
-        if (gameObject.name == "EnemyZombie") return 2f;
-        if (gameObject.name == "EnemySpider") return 5f;
+        if (gameObject.name == "EnemyIskeletor") return 2f;
+        if (gameObject.name == "EnemyWerewolf") return 5f;
         return 0f;
     }
 }

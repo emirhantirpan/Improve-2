@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraManager : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class CameraManager : MonoBehaviour
     {
         if(context.started) { isRotating = true; }
         else if (context.canceled) { isRotating = false; }
+    }
+    private void Update()
+    {
+        if (target == null) return;
     }
     private void LateUpdate()
     {
