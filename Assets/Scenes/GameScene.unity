@@ -2121,7 +2121,7 @@ MonoBehaviour:
   target: {fileID: 950682857}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0.1
+  rotationSpeed: 0.2
 --- !u!1001 &348017285
 PrefabInstance:
   m_ObjectHideFlags: 0
