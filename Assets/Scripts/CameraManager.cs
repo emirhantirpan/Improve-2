@@ -11,10 +11,16 @@ public class CameraManager : MonoBehaviour
     private float xRotation;
     private float yRotation;
     private bool isRotating;
+    private float startYRotation;
+    private float targetYRotation;
+    private float rotationTimer;
+    private float rotationDuration = 0.2f;
     private Vector2 delta;
     public Vector3 offset;
-        
-    [SerializeField] private float rotationSpeed = 0.5f;
+    private bool rotateToTarget = false;
+    private Quaternion targetRotation;
+
+    [SerializeField] private float rotationSpeed = 0.2f;
 
     private void Awake()
     {
@@ -35,6 +41,35 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         if (target == null) return;
+        if (Keyboard.current.zKey.wasPressedThisFrame && !rotateToTarget)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Transform closest = null;
+            float minDistance = Mathf.Infinity;
+
+            foreach (GameObject enemy in enemies)
+            {
+                float dist = Vector3.Distance(target.position, enemy.transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    closest = enemy.transform;
+                }
+            }
+
+            if (closest != null)
+            {
+                Vector3 dirToEnemy = closest.position - target.position;
+                dirToEnemy.y = 0;
+                if (dirToEnemy.sqrMagnitude > 0.01f)
+                {
+                    startYRotation = yRotation;
+                    targetYRotation = Quaternion.LookRotation(dirToEnemy).eulerAngles.y;
+                    rotationTimer = 0f;
+                    rotateToTarget = true;
+                }
+            }
+        }
     }
     private void LateUpdate()
     {
@@ -48,19 +83,28 @@ public class CameraManager : MonoBehaviour
         transform.position = target.position + offset;
         transform.rotation = rotation;
 
-        //if (Keyboard.current.zKey.wasPressedThisFrame)
-        //{
-        //    RotateCameraToCharacterFacingDirection();
-        //}
+        if (rotateToTarget)
+        {
+            rotationTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(rotationTimer / rotationDuration);
+            yRotation = Mathf.LerpAngle(startYRotation, targetYRotation, t);
 
-        
+            if (t >= 1f)
+            {
+                rotateToTarget = false;
+            }
+        }
+
+
     }
-    //private void RotateCameraToCharacterFacingDirection()
-    //{
-    //    Vector3 characterForward = target.forward;
+    public void RotateCameraToLookAtTarget(Vector3 lookDirection)
+    {
+        Vector3 flatLookDir = new Vector3(lookDirection.x, 0, lookDirection.z);
+        if (flatLookDir == Vector3.zero) return;
 
-    //    Quaternion lookRotation = Quaternion.LookRotation(characterForward);
-
-    //    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation,rotationSpeed*Time.deltaTime);   
-    //}
+        targetRotation = Quaternion.LookRotation(flatLookDir);
+        yRotation = targetRotation.eulerAngles.y;
+        rotateToTarget = true;
+    }
+  
 }
