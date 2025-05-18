@@ -10,11 +10,12 @@ public class EnemyTakeDamage : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_healthController == null || _sliderController == null) return;
+        if (_healthController == null) return;
 
         isTakingDamage = true;
         _healthController.DecreaseHealth(damage);
 
+        // Panel açma-kapama iþlemi burada devam edebilir.
         if (_healthController.health > 0)
         {
             PanelController.instance.OpenPanel(_sliderController._statPanel);
@@ -27,15 +28,18 @@ public class EnemyTakeDamage : MonoBehaviour
         StartCoroutine(ResetTakingDamage());
         StartCoroutine(ClosePanelAfterSeconds());
     }
+
+
     private IEnumerator ResetTakingDamage()
     {
         yield return new WaitForSeconds(2f);
         isTakingDamage = false;
     }
+
     private IEnumerator ClosePanelAfterSeconds()
     {
         yield return new WaitForSecondsRealtime(2f);
-        if (isTakingDamage == false)
+        if (!isTakingDamage)
         {
             PanelController.instance.ClosePanel(_sliderController._statPanel);
         }
