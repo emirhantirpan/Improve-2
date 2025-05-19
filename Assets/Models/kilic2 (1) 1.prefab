@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5924144631743144213
+--- !u!1 &1821341630897891017
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 446285398899358612}
-  - component: {fileID: 5284266057086641421}
-  - component: {fileID: 5028140301904495489}
-  - component: {fileID: 4449540090027859540}
-  - component: {fileID: 1480967378983296723}
+  - component: {fileID: 3090669263423620705}
+  - component: {fileID: 4673484443564380523}
+  - component: {fileID: 1228963515510738368}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: kilic2 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &446285398899358612
+  m_IsActive: 1
+--- !u!4 &3090669263423620705
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924144631743144213}
+  m_GameObject: {fileID: 1821341630897891017}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 483.2437, y: 1.5933335, z: 452.7598}
-  m_LocalScale: {x: 5, y: 0.25, z: 5}
+  m_LocalRotation: {x: 0.9111982, y: 0.000000036015418, z: 0.00000007965949, w: -0.41196826}
+  m_LocalPosition: {x: 0.5112865, y: 14.059089, z: 5.8292193}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5284266057086641421
+--- !u!33 &4673484443564380523
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924144631743144213}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5028140301904495489
+  m_GameObject: {fileID: 1821341630897891017}
+  m_Mesh: {fileID: 6687708012848683952, guid: 5ca7f8b4f453cdc4f9f9b96b573c3298, type: 3}
+--- !u!23 &1228963515510738368
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924144631743144213}
+  m_GameObject: {fileID: 1821341630897891017}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +64,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -7394202989295985249, guid: 5ca7f8b4f453cdc4f9f9b96b573c3298, type: 3}
+  - {fileID: 8529481535521766085, guid: 5ca7f8b4f453cdc4f9f9b96b573c3298, type: 3}
+  - {fileID: 7806100501455280664, guid: 5ca7f8b4f453cdc4f9f9b96b573c3298, type: 3}
+  - {fileID: -5423730058349959353, guid: 5ca7f8b4f453cdc4f9f9b96b573c3298, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,37 +89,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4449540090027859540
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924144631743144213}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.98, z: 0}
---- !u!114 &1480967378983296723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924144631743144213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f2488f7caaff94d834f2f6d36e70cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 10

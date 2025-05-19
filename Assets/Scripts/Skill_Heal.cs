@@ -4,7 +4,9 @@ using System.Collections;
 public class Skill_Heal : SkillBase
 {
     private int healAmount = 25;
+    public GameObject healEffectPrefab; // Inspector’dan atanacak prefab
     public HealthController HealthController;
+
     private void Start()
     {
         lastUseTime = -cooldownTime;
@@ -21,6 +23,18 @@ public class Skill_Heal : SkillBase
         if (playerHealth != null)
         {
             Heal(healAmount);
+
+         
+            if (healEffectPrefab != null)
+            {
+                GameObject effect = GameObject.Instantiate(
+                    healEffectPrefab,
+                    user.transform.position + Vector3.up, // Biraz yukarýda baþlasýn
+                    Quaternion.identity,
+                    user.transform // Oyuncuya yapýþýk olursa pozisyon bozulmaz
+                );
+            }
+
             Debug.Log($"{skillName} kullanýldý! Oyuncu {healAmount} can iyileþti.");
         }
         else
