@@ -12,7 +12,7 @@ public class HealthController : MonoBehaviour
     private float _healthPercentage;
 
     public SliderController SliderController;
-    public EnemyController EnemyController;
+    //public EnemyController EnemyController;
 
     private void Awake()
     {
@@ -26,7 +26,6 @@ public class HealthController : MonoBehaviour
     {
         HealthBar();
         DisplayTexts();
-        Die();
     }
     private void HealthBar()
     {
@@ -60,12 +59,5 @@ public class HealthController : MonoBehaviour
     public void DisplayTexts()
     {
         healthText.text = health.ToString();
-    }
-    public void Die()
-    {
-        if (health == 0)
-        {
-            Destroy(gameObject, 1f);
-        }
     }
 }

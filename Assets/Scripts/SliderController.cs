@@ -25,7 +25,7 @@ public class SliderController : MonoBehaviour
                 HealthController.health = 100;
 
                 break;
-            case "EnemyWerewolf":
+            case "EnemyOrk":
                 HealthController.health = 150;
 
                 break;

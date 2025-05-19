@@ -15,6 +15,10 @@ public class EnemyAttack : MonoBehaviour
 
     private Coroutine _attackCoroutine;
 
+    public void Setup(PlayerAttack playerAttack)
+    {
+        _playerAttack = playerAttack;
+    }
     private void Update()
     {
         SetScript();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyPooler : MonoBehaviour
 {
-    /*public GameObject enemyPrefab;
+    public GameObject enemyPrefab;
     public int poolSize = 10;  
     private Queue<GameObject> enemyPool;
 
@@ -36,5 +36,5 @@ public class EnemyPooler : MonoBehaviour
     {
         enemy.SetActive(false);  
         enemyPool.Enqueue(enemy);  
-    }*/
+    }
 }

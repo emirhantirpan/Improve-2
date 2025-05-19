@@ -9,6 +9,10 @@ public class EnemyMovement : MonoBehaviour
 
     private float distance;
 
+    public void Setup(Transform target)
+    {
+        _target = target;
+    }
     private void Update()
     {
         if (_target == null) return;

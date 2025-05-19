@@ -11,11 +11,19 @@ public class EnemyController : MonoBehaviour
     public SliderController sliderController;
     public HealthController healthController;
     public LevelController levelController;
+    public XpController xpController;
 
+    public EnemyPooler pooler;
+
+    public void Setup(EnemyPooler enemyPooler)
+    {
+        enemyPooler = pooler;
+    }
     public void Update()
     {
         Initialize();
         DisplayTexts();
+        Die();
     }
     public virtual void Initialize()
     {
@@ -32,5 +40,24 @@ public class EnemyController : MonoBehaviour
     public void OnMouseExit()
     {
         PanelController.instance.ClosePanel(sliderController._statPanel);
+    }
+    public void SetPool()
+    {
+        if (pooler != null)
+        {
+            pooler.ReturnEnemyToPool(gameObject);  // Kendini pool'a geri gönder
+        }
+        else
+        {
+            Debug.LogWarning("Pooler referansý bulunamadý!");
+        }
+    }
+    public void Die()
+    {
+        if (healthController.health == 0)
+        {
+            xpController.GainXP(10);
+            Destroy(gameObject, 1f);
+        }
     }
 }

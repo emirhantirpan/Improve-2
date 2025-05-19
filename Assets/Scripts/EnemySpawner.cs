@@ -61,13 +61,37 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;  // Inspector'dan prefab atayacaðýn yer
     public Transform spawnPoint;
 
+    public EnemyPooler enemyPooler;
+    public Transform playerTransform;
+    public PlayerAttack playerAttackScript;
+    //public int enemyHealth;
+
     public void SpawnEnemy()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        GameObject newEnemy = enemyPooler.GetEnemyFromPool();
+
+
+        newEnemy.transform.position = spawnPoint.position;
+
+        EnemyMovement movement = newEnemy.GetComponent<EnemyMovement>();
+        if (movement != null)
         {
-            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        // Burada enemyPrefab içinde tanýmlý her þey (component'lar, inspector deðerleri) olduðu gibi gelir
-            
+            movement.Setup(playerTransform);
+        }
+        EnemyAttack attack = newEnemy.GetComponent<EnemyAttack>();
+        if (attack != null)
+        {
+            attack.Setup(playerAttackScript);
+        }
+        EnemyController controller = newEnemy.GetComponent<EnemyController>();
+        if (controller != null)
+        {
+            controller.Setup(enemyPooler);
+        }
+
+        if (true)
+        {
+            newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 }
