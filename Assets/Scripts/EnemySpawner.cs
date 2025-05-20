@@ -66,6 +66,8 @@ public class EnemySpawner : MonoBehaviour
     public PlayerAttack playerAttackScript;
     //public int enemyHealth;
 
+    
+
     public void SpawnEnemy()
     {
         GameObject newEnemy = enemyPooler.GetEnemyFromPool();
